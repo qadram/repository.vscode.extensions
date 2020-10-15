@@ -7,7 +7,7 @@
 		"type": "git",
 		"url": "git://github.com/qadram/repository.vscode.extensions.git"
 	},
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"engines": {
 		"vscode": "^1.50.0"
 	},
@@ -31,5 +31,10 @@
 		"tslint": "^5.12.1",
 		"@types/node": "^10.12.21",
 		"@types/mocha": "^2.2.42"
+	},
+	"dependencies": {
+		"@types/yeoman-test": "^2.0.4",
+		"generator-code": "^1.3.3",
+		"yeoman-test": "^3.0.0"
 	}
 }
