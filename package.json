@@ -2,6 +2,11 @@
 	"name": "repository-vscode-extensions",
 	"displayName": "Repository Items for Visual Studio Code Extensions",
 	"description": "",
+	"publisher": "branchcreation",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/qadram/repository.vscode.extensions.git"
+	},
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.50.0"
