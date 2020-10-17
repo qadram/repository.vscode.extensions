@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as helpers from 'yeoman-test';
+import * as path from 'path';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -24,11 +25,6 @@ export function activate(context: vscode.ExtensionContext) {
 				'types': ['Extension'],
 				'projectname': 'MyExtension',
 				'fields': [
-					{
-						"name": "name",
-						"label": "Extension identifier",
-						"type": "string"
-					},
 					{
 						"name": "displayName",
 						"label": "Display Name",
@@ -73,29 +69,38 @@ export function activate(context: vscode.ExtensionContext) {
 		 * @param id ID of the item to be executed
 		 * @param params All parameters gathered on the UI
 		 */
-		execute(id: string, params: any) {
-			let outputpath = params.outputpath;
-			let prompts = {};
-			if ((id === 'ext-command-ts') || (id === 'ext-command-js')) {
-				prompts =
-				{
-					type: id,
-					name: params.name,
-					displayName: params.displayName,
-					description: params.description,
-					gitInit: params.gitInit,
-					pkgManager: params.pkgManager
-				};
+		async execute(id: string, params: any): Promise<string> {
+			return new Promise<string>((resolve, reject) => {
+				let outputpath = params.outputpath;
+				let prompts = {};
+				if ((id === 'ext-command-ts') || (id === 'ext-command-js')) {
+					prompts =
+					{
+						type: id,
+						name: params.projectname,
+						displayName: params.displayName,
+						description: params.description,
+						gitInit: params.gitInit,
+						pkgManager: params.pkgManager
+					};
 
-			}
+				}
 
-			process.chdir(outputpath);
-			//@ts-ignore		
-			helpers.run('./node_modules/generator-code/generators/app', { cwd: outputpath })
-				.withPrompts(prompts) // Mock the prompt answers
-				.toPromise().then(function () {
-					vscode.window.showInformationMessage('Finished!!');
-				});
+				process.chdir(outputpath);
+				let newappfolder = path.join(outputpath, params.projectname);
+				//@ts-ignore		
+				helpers.run(path.join(context.extensionPath, 'node_modules', 'generator-code', 'generators', 'app'), { cwd: outputpath })
+					.withOptions({
+						skipInstall: false
+					})
+					.withPrompts(prompts) // Mock the prompt answers
+					.toPromise().then(function () {
+						resolve(newappfolder);
+						vscode.window.showInformationMessage('Finished!!');
+					}, (reason) => {
+						reject(reason);
+					});
+			});
 		}
 	};
 	return (api);
