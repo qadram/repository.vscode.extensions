@@ -17,7 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
 			//Every item can have extra fields, to prompt the user for additional information
 			result.push({
 				'id': 'ext-command-ts',
-				'icon': './assets/images/pwa.svg',
+				'icon': './assets/images/extension.svg',
 				'caption': 'Visual Studio Code Extension',
 				'description': 'Creates a new Visual Studio Code Extension',
 				'languages': ['TypeScript'],
@@ -54,7 +54,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 			result.push({
 				'id': 'ext-command-js',
-				'icon': '',
+				'icon': './assets/images/extension.svg',
 				'caption': 'Visual Studio Code Extension',
 				'description': 'Creates a new Visual Studio Code Extension',
 				'languages': ['JavaScript'],
@@ -65,7 +65,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 			result.push({
 				'id': 'ext-color-theme',
-				'icon': '',
+				'icon': './assets/images/colortheme.svg',
 				'caption': 'Visual Studio Code Color Theme',
 				'description': 'Creates a new Visual Studio Code Color Theme',
 				'languages': ['JSON'],
@@ -73,6 +73,50 @@ export function activate(context: vscode.ExtensionContext) {
 				'types': ['Color Theme'],
 				'projectname': 'MyColorTheme'
 			});			
+
+			result.push({
+				'id': 'ext-language-support',
+				'icon': './assets/images/languagesupport.svg',
+				'caption': 'Visual Studio Code Language Support',
+				'description': 'Creates a project to add a new language to Visual Studio Code',
+				'languages': ['JSON'],
+				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
+				'types': ['Color Theme'],
+				'projectname': 'MyLanguageSupport'
+			});						
+
+			result.push({
+				'id': 'ext-code-snippets',
+				'icon': './assets/images/codesnippets.svg',
+				'caption': 'Visual Studio Code Snippets',
+				'description': 'Creates a project to provide Code Snippets',
+				'languages': ['JSON'],
+				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
+				'types': ['Color Theme'],
+				'projectname': 'MyLanguageSupport'
+			});				
+			
+			result.push({
+				'id': 'ext-key-map',
+				'icon': './assets/images/keymap.svg',
+				'caption': 'Visual Studio Code Keymap',
+				'description': 'Creates a new keymap',
+				'languages': ['JSON'],
+				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
+				'types': ['Color Theme'],
+				'projectname': 'MyLanguageSupport'
+			});		
+			
+			result.push({
+				'id': 'ext-extension-pack',
+				'icon': '',
+				'caption': 'Visual Studio Code Extension Pack',
+				'description': 'Creates a new extension pack',
+				'languages': ['JSON'],
+				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
+				'types': ['Extension'],
+				'projectname': 'MyLanguageSupport'
+			});									
 			return (result);
 		},
 		/**
