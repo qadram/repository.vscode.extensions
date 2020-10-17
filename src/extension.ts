@@ -62,6 +62,17 @@ export function activate(context: vscode.ExtensionContext) {
 				'types': ['Extension'],
 				'projectname': 'MyExtension'
 			});
+
+			result.push({
+				'id': 'ext-color-theme',
+				'icon': '',
+				'caption': 'Visual Studio Code Color Theme',
+				'description': 'Creates a new Visual Studio Code Color Theme',
+				'languages': ['JSON'],
+				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
+				'types': ['Color Theme'],
+				'projectname': 'MyColorTheme'
+			});			
 			return (result);
 		},
 		/**
