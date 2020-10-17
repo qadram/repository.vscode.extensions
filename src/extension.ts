@@ -81,7 +81,7 @@ export function activate(context: vscode.ExtensionContext) {
 				'description': 'Creates a project to add a new language to Visual Studio Code',
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
-				'types': ['Color Theme'],
+				'types': ['Language Support'],
 				'projectname': 'MyLanguageSupport'
 			});						
 
@@ -92,8 +92,8 @@ export function activate(context: vscode.ExtensionContext) {
 				'description': 'Creates a project to provide Code Snippets',
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
-				'types': ['Color Theme'],
-				'projectname': 'MyLanguageSupport'
+				'types': ['Code Snippets'],
+				'projectname': 'MyCodeSnippets'
 			});				
 			
 			result.push({
@@ -103,8 +103,8 @@ export function activate(context: vscode.ExtensionContext) {
 				'description': 'Creates a new keymap',
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
-				'types': ['Color Theme'],
-				'projectname': 'MyLanguageSupport'
+				'types': ['Keymap'],
+				'projectname': 'MyKeymap'
 			});		
 			
 			result.push({
@@ -115,7 +115,7 @@ export function activate(context: vscode.ExtensionContext) {
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Extension'],
-				'projectname': 'MyLanguageSupport'
+				'projectname': 'MyExtensionPack'
 			});									
 			return (result);
 		},
