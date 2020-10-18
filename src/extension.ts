@@ -28,22 +28,26 @@ export function activate(context: vscode.ExtensionContext) {
 					{
 						"name": "displayName",
 						"label": "Display Name",
-						"type": "string"
+						"type": "string",
+						"placeholder": "The display name for the extension used in the VS Code gallery (i.e. My Extension)"
 					},
 					{
 						"name": "description",
 						"label": "Description",
-						"type": "string"
+						"type": "string",
+						"placeholder": "This helps people discover your package, as it's listed in 'npm search'"
 					},
 					{
 						"name": "gitInit",
 						"label": "Initialize git repository",
-						"type": "boolean"
+						"type": "boolean",
+						"default": true
 					},
 					{
 						"name": "pkgManager",
 						"label": "Package manager",
 						"type": "dropdown",
+						"default": "npm",
 						"options": [
 							"npm",
 							"yarn"
