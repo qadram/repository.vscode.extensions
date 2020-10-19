@@ -64,30 +64,164 @@ export function activate(context: vscode.ExtensionContext) {
 				'languages': ['JavaScript'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Extension'],
-				'projectname': 'MyExtension'
+				'projectname': 'MyExtension',
+				'fields': [
+					{
+						"name": "displayName",
+						"label": "Display Name",
+						"type": "string",
+						"placeholder": "The display name for the extension used in the VS Code gallery (i.e. My Extension)"
+					},
+					{
+						"name": "description",
+						"label": "Description",
+						"type": "string",
+						"placeholder": "This helps people discover your package, as it's listed in 'npm search'"
+					},
+					{
+						"name": "gitInit",
+						"label": "Initialize git repository",
+						"type": "boolean",
+						"default": true
+					},
+					{
+						"name": "pkgManager",
+						"label": "Package manager",
+						"type": "dropdown",
+						"default": "npm",
+						"options": [
+							"npm",
+							"yarn"
+						]
+					}
+				]
 			});
 
 			result.push({
-				'id': 'ext-color-theme',
+				'id': 'ext-colortheme',
 				'icon': './assets/images/colortheme.svg',
 				'caption': 'Visual Studio Code Color Theme',
 				'description': 'Generates a new Visual Studio Code Color Theme from scratch or based on an existing TextMate theme.',
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Color Theme'],
-				'projectname': 'MyColorTheme'
-			});			
+				'projectname': 'MyColorTheme',
+				'fields': [
+					{
+						"name": "displayName",
+						"label": "Display Name",
+						"type": "string",
+						"placeholder": "The display name for the extension used in the VS Code gallery (i.e. My Color Theme)"
+					},
+					{
+						"name": "description",
+						"label": "Description",
+						"type": "string",
+						"placeholder": "This helps people discover your package, as it's listed in 'npm search'"
+					},
+					{
+						"name": "themeImportType",
+						"label": "Import or convert an existing TextMate color theme?",
+						"type": "dropdown",
+						"default": "No, start fresh",
+						"options": [
+							"No, start fresh",
+							"Yes, import an existing theme but keep it as tmTheme file.",
+							"Yes, import an existing theme and inline it in the Visual Studio Code color theme file."
+						]
+					},
+					{
+						"name": "themeURL",
+						"label": "Enter the location (URL (http, https) or file name) of the tmTheme file",
+						"type": "string",
+						"placeholder": "e.g., http://www.monokai.nl/blog/wp-content/asdev/Monokai.tmTheme."
+					},
+					{
+						"name": "themeName",
+						"label": "Theme Name",
+						"type": "string",
+						"placeholder": "What's the name of your theme shown to the user? (i.e. Green)"
+					},
+					{
+						"name": "themeBase",
+						"label": "Select a base theme:",
+						"type": "dropdown",
+						"default": "Dark",
+						"options": [
+							"Dark",
+							"Light",
+							"High Contrast"
+						]
+					},
+					{
+						"name": "gitInit",
+						"label": "Initialize git repository",
+						"type": "boolean",
+						"default": true
+					}
+				]
+			});
 
 			result.push({
-				'id': 'ext-language-support',
+				'id': 'ext-language',
 				'icon': './assets/images/languagesupport.svg',
 				'caption': 'Visual Studio Code Language Support',
 				'description': 'Creates a project to add support for a new programming language to Visual Studio Code.',
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Language Support'],
-				'projectname': 'MyLanguageSupport'
-			});						
+				'projectname': 'MyLanguageSupport',
+				'fields': [
+					{
+						"name": "tmLanguageURL",
+						"label": "Language URL",
+						"type": "string",
+						"placeholder": "URL or file to import, or none for new."
+					},					
+					{
+						"name": "displayName",
+						"label": "Display Name",
+						"type": "string",
+						"placeholder": "The display name for the extension used in the VS Code gallery (i.e. My Color Theme)"
+					},
+					{
+						"name": "description",
+						"label": "Description",
+						"type": "string",
+						"placeholder": "This helps people discover your package, as it's listed in 'npm search'"
+					},
+					{
+						"name": "languageId",
+						"label": "Language id",
+						"type": "string",
+						"placeholder": "Enter the id of the language. The id is an identifier and is single, lower-case name such as \'php\', \'javascript\'"
+					},
+					{
+						"name": "languageName",
+						"label": "Language name",
+						"type": "string",
+						"placeholder": "Enter the name of the language. The name will be shown in the VS Code editor mode selector"
+					},					
+					{
+						"name": "languageExtensions",
+						"label": "File extensions",
+						"type": "string",
+						"placeholder": "Enter the file extensions of the language. Use commas to separate multiple entries (e.g. .ruby, .rb)"
+					},										
+					{
+						"name": "languageScopeName",
+						"label": "Scope names",
+						"type": "string",
+						"placeholder": "Enter the root scope name of the grammar (e.g. source.ruby)"
+					},															
+					{
+						"name": "gitInit",
+						"label": "Initialize git repository",
+						"type": "boolean",
+						"default": true
+					}
+				]				
+			});
 
 			result.push({
 				'id': 'ext-code-snippets',
@@ -98,8 +232,8 @@ export function activate(context: vscode.ExtensionContext) {
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Code Snippets'],
 				'projectname': 'MyCodeSnippets'
-			});				
-			
+			});
+
 			result.push({
 				'id': 'ext-key-map',
 				'icon': './assets/images/keymap.svg',
@@ -109,18 +243,44 @@ export function activate(context: vscode.ExtensionContext) {
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Keymap'],
 				'projectname': 'MyKeymap'
-			});		
-			
+			});
+
 			result.push({
-				'id': 'ext-extension-pack',
+				'id': 'ext-extensionpack',
 				'icon': './assets/images/extensionpack.svg',
 				'caption': 'Visual Studio Code Extension Pack',
 				'description': 'Creates a new extension pack to bundle several extensions together.',
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Extension'],
-				'projectname': 'MyExtensionPack'
-			});									
+				'projectname': 'MyExtensionPack',
+				'fields': [
+					{
+						"name": "addExtensions",
+						"label": "Add the currently installed extensions to the extension pack?",
+						"type": "boolean",
+						"default": "true",
+					},					
+					{
+						"name": "displayName",
+						"label": "Display Name",
+						"type": "string",
+						"placeholder": "The display name for the extension used in the VS Code gallery (i.e. My Extension Pack)"
+					},
+					{
+						"name": "description",
+						"label": "Description",
+						"type": "string",
+						"placeholder": "This helps people discover your package, as it's listed in 'npm search'"
+					},
+					{
+						"name": "gitInit",
+						"label": "Initialize git repository",
+						"type": "boolean",
+						"default": true
+					}
+				]				
+			});
 			return (result);
 		},
 		/**
@@ -142,8 +302,42 @@ export function activate(context: vscode.ExtensionContext) {
 						gitInit: params.gitInit,
 						pkgManager: params.pkgManager
 					};
-
 				}
+				else if (id === 'ext-colortheme') {
+					let themeimporttypes: Map<string, string> = new Map();
+					themeimporttypes.set('No, start fresh', 'new');
+					themeimporttypes.set('Yes, import an existing theme but keep it as tmTheme file.', 'import-keep');
+					themeimporttypes.set('Yes, import an existing theme and inline it in the Visual Studio Code color theme file.', 'import-inline');
+
+
+					let themebases: Map<string, string> = new Map();
+					themebases.set('Dark', 'vs-dark');
+					themebases.set('Light', 'vs');
+					themebases.set('High Contrast', 'hc-black');
+					prompts =
+					{
+						type: id,
+						name: params.projectname,
+						displayName: params.displayName,
+						description: params.description,
+						themeImportType: themeimporttypes.get(params.themeImportType),
+						themeURL: params.themeURL,
+						themeName: params.themeName,
+						themeBase: themebases.get(params.themeBase),
+						gitInit: params.gitInit
+					};
+				}
+				else if (id === 'ext-extensionpack') {
+					prompts =
+					{
+						type: id,
+						name: params.projectname,
+						addExtensions: params.addExtensions,						
+						displayName: params.displayName,
+						description: params.description,
+						gitInit: params.gitInit
+					};
+				}				
 
 				process.chdir(outputpath);
 				let newappfolder = path.join(outputpath, params.projectname);
