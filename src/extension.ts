@@ -177,7 +177,7 @@ export function activate(context: vscode.ExtensionContext) {
 						"label": "Language URL",
 						"type": "string",
 						"placeholder": "URL or file to import, or none for new."
-					},					
+					},
 					{
 						"name": "displayName",
 						"label": "Display Name",
@@ -201,48 +201,94 @@ export function activate(context: vscode.ExtensionContext) {
 						"label": "Language name",
 						"type": "string",
 						"placeholder": "Enter the name of the language. The name will be shown in the VS Code editor mode selector"
-					},					
+					},
 					{
 						"name": "languageExtensions",
 						"label": "File extensions",
 						"type": "string",
 						"placeholder": "Enter the file extensions of the language. Use commas to separate multiple entries (e.g. .ruby, .rb)"
-					},										
+					},
 					{
 						"name": "languageScopeName",
 						"label": "Scope names",
 						"type": "string",
 						"placeholder": "Enter the root scope name of the grammar (e.g. source.ruby)"
-					},															
+					},
 					{
 						"name": "gitInit",
 						"label": "Initialize git repository",
 						"type": "boolean",
 						"default": true
 					}
-				]				
+				]
 			});
 
 			result.push({
-				'id': 'ext-code-snippets',
+				'id': 'ext-snippets',
 				'icon': './assets/images/codesnippets.svg',
 				'caption': 'Visual Studio Code Snippets',
 				'description': 'Code snippets are templates that make it easier to enter repeating code patterns, use this item to create a project that provide them.',
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Code Snippets'],
-				'projectname': 'MyCodeSnippets'
+				'projectname': 'MyCodeSnippets',
+				'fields': [
+					{
+						"name": "snippetPath",
+						"label": "Folder name for import or none for new",
+						"type": "string",
+						"placeholder": "Folder location that contains Text Mate (.tmSnippet) and Sublime snippets (.sublime-snippet) or press ENTER to start with a new snippet file."
+					},
+					{
+						"name": "displayName",
+						"label": "Display Name",
+						"type": "string",
+						"placeholder": "The display name for the extension used in the VS Code gallery (i.e. My Color Theme)"
+					},
+					{
+						"name": "description",
+						"label": "Description",
+						"type": "string",
+						"placeholder": "This helps people discover your package, as it's listed in 'npm search'"
+					},
+					{
+						"name": "languageId",
+						"label": "Language id",
+						"type": "string",
+						"placeholder": "Enter the language for which the snippets should appear. The id is an identifier and is single, lower-case name such as 'php', 'javascript'"
+					},
+					{
+						"name": "gitInit",
+						"label": "Initialize git repository",
+						"type": "boolean",
+						"default": true
+					}
+				]
 			});
 
 			result.push({
-				'id': 'ext-key-map',
+				'id': 'ext-keymap',
 				'icon': './assets/images/keymap.svg',
 				'caption': 'Visual Studio Code Keymap',
 				'description': 'Creates a new extension that provides a keymap.',
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Keymap'],
-				'projectname': 'MyKeymap'
+				'projectname': 'MyKeymap',
+				'fields': [
+					{
+						"name": "displayName",
+						"label": "Display Name",
+						"type": "string",
+						"placeholder": "The display name for the extension used in the VS Code gallery (i.e. My Color Theme)"
+					},
+					{
+						"name": "gitInit",
+						"label": "Initialize git repository",
+						"type": "boolean",
+						"default": true
+					}
+				]
 			});
 
 			result.push({
@@ -260,7 +306,7 @@ export function activate(context: vscode.ExtensionContext) {
 						"label": "Add the currently installed extensions to the extension pack?",
 						"type": "boolean",
 						"default": "true",
-					},					
+					},
 					{
 						"name": "displayName",
 						"label": "Display Name",
@@ -279,7 +325,53 @@ export function activate(context: vscode.ExtensionContext) {
 						"type": "boolean",
 						"default": true
 					}
-				]				
+				]
+			});
+			result.push({
+				'id': 'ext-localization',
+				'icon': './assets/images/localization.svg',
+				'caption': 'Visual Studio Code Language Pack (Localization)',
+				'description': 'Creates a new language pack to localize Visual Studio Code.',
+				'languages': ['JSON'],
+				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
+				'types': ['Language Pack'],
+				'projectname': 'MyLanguagePack',
+				'fields': [
+					{
+						"name": "lpLanguageId",
+						"label": "Language id",
+						"type": "string",
+						"placeholder": "Enter the language identifier as used on transifex (e.g. bg, zh-Hant)",
+					},
+					{
+						"name": "lpLanguageName",
+						"label": "Language name",
+						"type": "string",
+						"placeholder": "Enter the language name in English (e.g. 'Bulgarian', 'Dutch')."
+					},
+					{
+						"name": "lpLocalizedLanguageName",
+						"label": "Localized language name",
+						"type": "string",
+						"placeholder": "Enter the language name in its original language"
+					},
+					{
+						"name": "pkgManager",
+						"label": "Package manager",
+						"type": "dropdown",
+						"default": "npm",
+						"options": [
+							"npm",
+							"yarn"
+						]
+					},
+					{
+						"name": "gitInit",
+						"label": "Initialize git repository",
+						"type": "boolean",
+						"default": true
+					}
+				]
 			});
 			return (result);
 		},
@@ -301,6 +393,43 @@ export function activate(context: vscode.ExtensionContext) {
 						description: params.description,
 						gitInit: params.gitInit,
 						pkgManager: params.pkgManager
+					};
+				}
+				else if (id === 'ext-language') {
+					prompts =
+					{
+						type: id,
+						name: params.projectname,
+						tmLanguageURL: params.tmLanguageURL,
+						displayName: params.displayName,
+						description: params.description,
+						languageId: params.languageId,
+						languageName: params.languageName,
+						languageExtensions: params.languageExtensions,
+						languageScopeName: params.languageScopeName,
+						gitInit: params.gitInit
+					};
+				}
+				else if (id === 'ext-snippets') {
+					prompts =
+					{
+						type: id,
+						name: params.projectname,
+						snippetPath: params.snippetPath,
+						displayName: params.displayName,
+						description: params.description,
+						languageId: params.languageId,
+						gitInit: params.gitInit
+					};
+				}
+				else if (id === 'ext-keymap') {
+					prompts =
+					{
+						type: id,
+						name: params.projectname,
+						displayName: params.displayName,
+						description: params.description,
+						gitInit: params.gitInit
 					};
 				}
 				else if (id === 'ext-colortheme') {
@@ -332,12 +461,25 @@ export function activate(context: vscode.ExtensionContext) {
 					{
 						type: id,
 						name: params.projectname,
-						addExtensions: params.addExtensions,						
+						addExtensions: params.addExtensions,
 						displayName: params.displayName,
 						description: params.description,
 						gitInit: params.gitInit
 					};
-				}				
+				}
+				if (id === 'ext-localization') {
+					prompts =
+					{
+						type: id,
+						name: params.projectname,
+						lpLanguageId: params.lpLanguageId,
+						lpLanguageName: params.lpLanguageName,
+						lpLocalizedLanguageName: params.lpLocalizedLanguageName,
+						gitInit: params.gitInit,
+						pkgManager: params.pkgManager
+					};
+				}
+
 
 				process.chdir(outputpath);
 				let newappfolder = path.join(outputpath, params.projectname);
@@ -348,8 +490,7 @@ export function activate(context: vscode.ExtensionContext) {
 					})
 					.withPrompts(prompts) // Mock the prompt answers
 					.toPromise().then(function () {
-						resolve(newappfolder);
-						vscode.window.showInformationMessage('Finished!!');
+						resolve(newappfolder);						
 					}, (reason) => {
 						reject(reason);
 					});
