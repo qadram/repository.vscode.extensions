@@ -383,6 +383,13 @@ export function activate(context: vscode.ExtensionContext) {
 		async execute(id: string, params: any): Promise<string> {
 			return new Promise<string>((resolve, reject) => {
 				let outputpath = params.outputpath;
+				if (params.displayName === '') {
+					params.displayName = ' ';
+				}
+				if (params.description === '') {
+					params.description = ' ';
+				}                    
+
 				let prompts = {};
 				if ((id === 'ext-command-ts') || (id === 'ext-command-js')) {
 					prompts =
