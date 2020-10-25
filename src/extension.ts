@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
 				'languages': ['TypeScript'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Extension'],
-				'projectname': 'MyExtension',
+				'projectname': 'myextension',
 				'fields': [
 					{
 						"name": "displayName",
@@ -64,7 +64,7 @@ export function activate(context: vscode.ExtensionContext) {
 				'languages': ['JavaScript'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Extension'],
-				'projectname': 'MyExtension',
+				'projectname': 'myextension',
 				'fields': [
 					{
 						"name": "displayName",
@@ -105,7 +105,7 @@ export function activate(context: vscode.ExtensionContext) {
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Color Theme'],
-				'projectname': 'MyColorTheme',
+				'projectname': 'mycolortheme',
 				'fields': [
 					{
 						"name": "displayName",
@@ -170,7 +170,7 @@ export function activate(context: vscode.ExtensionContext) {
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Language Support'],
-				'projectname': 'MyLanguageSupport',
+				'projectname': 'mylanguagesupport',
 				'fields': [
 					{
 						"name": "tmLanguageURL",
@@ -182,7 +182,7 @@ export function activate(context: vscode.ExtensionContext) {
 						"name": "displayName",
 						"label": "Display Name",
 						"type": "string",
-						"placeholder": "The display name for the extension used in the VS Code gallery (i.e. My Color Theme)"
+						"placeholder": "The display name for the extension used in the VS Code gallery (i.e. My Language Support)"
 					},
 					{
 						"name": "description",
@@ -231,7 +231,7 @@ export function activate(context: vscode.ExtensionContext) {
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Code Snippets'],
-				'projectname': 'MyCodeSnippets',
+				'projectname': 'mycodesnippets',
 				'fields': [
 					{
 						"name": "snippetPath",
@@ -274,7 +274,7 @@ export function activate(context: vscode.ExtensionContext) {
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Keymap'],
-				'projectname': 'MyKeymap',
+				'projectname': 'mykeymap',
 				'fields': [
 					{
 						"name": "displayName",
@@ -299,7 +299,7 @@ export function activate(context: vscode.ExtensionContext) {
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Extension'],
-				'projectname': 'MyExtensionPack',
+				'projectname': 'myextensionpack',
 				'fields': [
 					{
 						"name": "addExtensions",
@@ -335,7 +335,7 @@ export function activate(context: vscode.ExtensionContext) {
 				'languages': ['JSON'],
 				'platforms': ['Linux', 'macOS', 'Windows', 'ARM'],
 				'types': ['Language Pack'],
-				'projectname': 'MyLanguagePack',
+				'projectname': 'mylanguagepack',
 				'fields': [
 					{
 						"name": "lpLanguageId",
