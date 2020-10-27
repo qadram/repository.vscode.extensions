@@ -8,7 +8,7 @@
 		"url": "git://github.com/qadram/repository.vscode.extensions.git"
 	},
 	"icon": "media/icon_vscode.png",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"engines": {
 		"vscode": "^1.50.0"
 	},
