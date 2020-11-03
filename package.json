@@ -1,6 +1,6 @@
 {
 	"name": "repository-vscode-extensions",
-	"displayName": "Repository Items for Visual Studio Code Extensions",
+	"displayName": "Visual Studio Code Extension Items for Repository",
 	"description": "Items to create Visual Studio Code Extensions, to use with the Repository extension",
 	"publisher": "branchcreation",
 	"repository": {
